@@ -10,9 +10,8 @@ all:
 	rm -rf AppDir/opt
 	mkdir --parents AppDir/opt/application
 
-	command -v 7z 2>&1 && 7z x $(DESTINATION)
-	# CentOs 7z version command 
-	command -v 7za 2>&1 && 7za x $(DESTINATION)
+
+	7za x $(DESTINATION)
 	
 	unzip build
 
