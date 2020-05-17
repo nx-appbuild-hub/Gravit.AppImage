@@ -12,12 +12,15 @@ all:
 
 
 	7za x $(DESTINATION)
-	
-	unzip build
 
+	unzip build
 	chmod +x $(OUTPUT)
+	./$(OUTPUT) --appimage-extract
+	sed -i 's/exec "$$BIN"/$$BIN --no-sandbox/g' squashfs-root/AppRun
+	export ARCH=x86_64 && bin/appimagetool.AppImage squashfs-root $(OUTPUT)
 
 	rm -rf build
+	rm -rf squashfs-root
 	rm -rf Installation-Guide.html
 	rm -rf latest-linux.yml
 	rm -f $(DESTINATION)
