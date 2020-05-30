@@ -5,7 +5,8 @@ OUTPUT="GravitDesigner.AppImage"
 
 all:
 	echo "Building: $(OUTPUT)"
-	wget -O $(DESTINATION) --continue $(SOURCE)
+	wget --no-check-certificate --output-document=$(DESTINATION) --continue $(SOURCE)
+	
 
 	rm -rf AppDir/opt
 	mkdir --parents AppDir/opt/application
